@@ -21,3 +21,13 @@ services:
       MYSQL_ROOT_PASSWORD: ""
     volumes:
       - ./.db:/var/lib/mysql
+
+
+  node:
+    image: "node:latest"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/home/node/app
