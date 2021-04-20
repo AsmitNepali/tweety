@@ -9,7 +9,9 @@ class TweetsController extends Controller
 {
     public function index()
     {
-
+        return view('tweets.index',[
+            'tweets' => auth()->user()->timeline(),
+        ]);
     }
 
     public function store()
@@ -21,6 +23,6 @@ class TweetsController extends Controller
             'user_id' => auth()->id(),
             'body' => $attributes['body'],
         ]);
-        return redirect('/home');
+        return redirect('/tweets');
     }
 }

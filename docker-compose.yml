@@ -6,7 +6,7 @@ services:
       dockerfile: .docker/Dockerfile
     image: 'asmit99/tweety'
     ports:
-      - 8080:80
+      - 8000:80
     volumes:
       - ./:/var/www/html
   db:
@@ -14,7 +14,7 @@ services:
     image: mariadb:latest
     restart: always
     ports:
-      - "3306:3306"
+      - "3356:3306"
     environment:
       MYSQL_DATABASE: 'tweety'
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
