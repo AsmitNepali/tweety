@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('components.app')
 
 @section('content')
    <header class="mb-6 relative">
@@ -7,11 +7,14 @@
        <div class="flex justify-between items-center mb-6">
            <div>
                <h2 class="font-bold text-2xl mb-0">{{$user->name}}</h2>
-               <p class="text-sm">Joined {{$user->created_at->diffForHumans() }}</p>
+               <p class="text-sm">Joined {{$user->created_at}}</p>
            </div>
-           <div>
+           <div class="flex">
                <a href="" class="rounded-full border border-gray-300 py-2 px-4 mx-2 text-sm text-black text-xs"> Edit Profile </a>
-               <a href="" class="bg-blue-500 rounded-full shadow py-2 px-4 text-sm text-white text-xs"> Fllow Me </a>
+               <form method="POST" action="/profiles/{{ $user->name }}/follows">
+                   @csrf
+                   <button class="bg-blue-500 rounded-full shadow py-2 px-4 text-sm text-white text-xs"> {{(auth()->user()->following($user) ? 'Unfollow Me' : 'Follow Me')}} </button>
+               </form>
            </div>
        </div>
         <p class="text-sm">

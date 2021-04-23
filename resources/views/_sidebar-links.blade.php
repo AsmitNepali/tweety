@@ -15,7 +15,7 @@
         <a class="font-bold text-lg mb-4 block" href="#">Bookmarks</a>
     </li>
     <li>
-        <a class="font-bold text-lg mb-4 block" href="{{ route('profile',auth()->user()) }}">Profile</a>
+        <a class="font-bold text-lg mb-4 block" href="{{ auth()->user()->profile() }}">Profile</a>
     </li>
     <li>
         <a class="font-bold text-lg mb-4 block" href="#">Lists</a>
