@@ -55,14 +55,15 @@ class User extends Authenticatable
 
     public function timeline()
     {
-        $ids = $this->follows()->pluck('id');
-        $ids= $ids->push($this->id);
+        $ids = $this->follows()->pluck('id')->push($this->id);
+
         return Tweet::whereIn('user_id',$ids)->latest()->get();
     }
 
-    public function profile()
+    public function profile($append = null)
     {
-        return route('profile',$this->name);
+        $path = route('profile',$this->name);
+        return $append ? "{$path}/{$append}" : $path;
     }
 
 

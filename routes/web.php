@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/tweets',[TweetsController::class,'index'])->name('home');
     Route::post('/tweets',[TweetsController::class,'store']);
+    Route::get('/profiles/{user:name}/edit',[ProfilesController::class,'edit']);
     Route::post('/profiles/{user:name}/follows',[FollowsController::class,'store']);
 
 });
