@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Traits\Followable;
+use function PHPUnit\Framework\isEmpty;
 
 class User extends Authenticatable
 {
@@ -18,6 +19,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'username',
+        'avatar',
         'name',
         'email',
         'password',
@@ -48,9 +51,14 @@ class User extends Authenticatable
         return $this->hasMany(Tweet::class);
     }
 
-    public function getAvatarAttribute()
+    public function getAvatarAttribute($value)
     {
-        return "https://i.pravatar.cc/200?u=". $this->email;
+        return asset(empty($value) ? '/images/default.png': 'storage/'.$value);
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
     }
 
     public function timeline()
@@ -62,7 +70,7 @@ class User extends Authenticatable
 
     public function profile($append = null)
     {
-        $path = route('profile',$this->name);
+        $path = route('profile',$this->username);
         return $append ? "{$path}/{$append}" : $path;
     }
 

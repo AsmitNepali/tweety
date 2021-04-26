@@ -5,7 +5,7 @@
        <div class="relative">
            <img src="/images/default-profile-banner.jpg" alt="" class="mb-2">
 
-           <img src="{{$user ->avatar}}" alt="avtar" class="rounded-full mr-2 absolute bottom-0 transform -translate-x-1/2 translate-y-1/2" width="150" style="left: 50%;">
+           <img src="{{$user->avatar}}" alt="avtar" class="rounded-full mr-2 absolute bottom-0 transform -translate-x-1/2 translate-y-1/2" width="150" style="left: 50%;">
        </div>
 
        <div class="flex justify-between items-center mb-6">
@@ -14,11 +14,11 @@
                <p class="text-sm">Joined {{$user->created_at}}</p>
            </div>
            <div class="flex">
-               @if(current_user()->is($user))
+               @can('edit',$user)
                 <a href="{{ $user->profile('edit') }}" class="rounded-full border border-gray-300 py-2 px-4 mx-2 text-sm text-black text-xs"> Edit Profile </a>
-               @endif
+               @endcan
                @unless(current_user()->is($user))
-                   <form method="POST" action="/profiles/{{ $user->name }}/follows">
+                   <form method="POST" action="/profiles/{{ $user->username }}/follows">
                        @csrf
                        <button class="bg-blue-500 rounded-full shadow py-2 px-4 text-sm text-white text-xs"> {{(auth()->user()->following($user) ? 'Unfollow Me' : 'Follow Me')}} </button>
                    </form>

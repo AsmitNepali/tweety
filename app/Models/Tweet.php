@@ -15,5 +15,25 @@ class Tweet extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function like()
+    {
+        $this->likes()->create([
+            'user_id' => auth()->id(),
+            'liked' => true,
+        ]);
+    }
+
+    public function dislike()
+    {
+        $this->likes()->create([
+            'user_id' => auth()->id(),
+            'liked' => false,
+        ]);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 
 }
