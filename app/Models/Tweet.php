@@ -15,20 +15,28 @@ class Tweet extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function like()
+    public function like($user = null, $liked = true)
     {
-        $this->likes()->create([
-            'user_id' => auth()->id(),
-            'liked' => true,
+        $this->likes()->updateOrCreate([
+            'user_id' => $user? $user->id : auth()->id(),
+        ],[
+            'liked' => $liked,
         ]);
     }
 
-    public function dislike()
+    public function dislike($user = null)
     {
-        $this->likes()->create([
-            'user_id' => auth()->id(),
-            'liked' => false,
-        ]);
+        $this->like($user,false);
+    }
+
+    public function  isLikedBy(User $user)
+    {
+        return (bool)$user->likes->where('tweet_id', $this->id)->where('liked', true)->count();
+    }
+
+    public function  isDislikedBy(User $user)
+    {
+        return (bool)$user->likes->where('tweet_id', $this->id)->where('liked', flase)->count();
     }
 
     public function likes()
