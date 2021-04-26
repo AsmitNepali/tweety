@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3771bfa4-990f-426e-ae00-fb31de149b0f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Traits/Likabel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Like.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Like.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Tweet.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tweet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_tweet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_tweet.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +179,8 @@
       <workItem from="1619364201876" duration="5120000" />
       <workItem from="1619412435164" duration="760000" />
       <workItem from="1619438376691" duration="707000" />
-      <workItem from="1619439125509" duration="2161000" />
+      <workItem from="1619439125509" duration="3597000" />
+      <workItem from="1619449418024" duration="716000" />
     </task>
     <servers />
   </component>
